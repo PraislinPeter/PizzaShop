@@ -14,13 +14,26 @@ import { FetchPizzaService } from './fetch-pizza.service';
 })
 export class AppComponent {
   title = 'PizzaShop';
-  pizzaList: Pizza []=[];
-  pizza : FetchPizzaService=inject(FetchPizzaService);
-  constructor (){
+  pizzaList: Pizza[] = [];
+  filteredPizzaList: Pizza[] = [];
+  pizza: FetchPizzaService;
+
+  constructor(fetchPizzaService: FetchPizzaService) {
+    this.pizza = fetchPizzaService;
     this.pizza.getAllPizza().then((pizzaList: Pizza[]) => {
       this.pizzaList = pizzaList;
+      this.filteredPizzaList = this.pizzaList; // Move assignment here
     });
-    
   }
 
+  filterResults(text: string) {
+    if (!text) {
+      this.filteredPizzaList = this.pizzaList;
+      return;
+    }
+
+    this.filteredPizzaList = this.pizzaList.filter(
+      pizza => pizza?.name.toLowerCase().includes(text.toLowerCase())
+    );
+  }
 }
