@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { Pizza } from './pizza';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FetchPizzaService } from './fetch-pizza.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,6 +14,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'PizzaShop';
-  pizzaList: Pizza []=[ {id : 1, name: "name", price: 2}];
+  pizzaList: Pizza []=[];
+  pizza : FetchPizzaService=inject(FetchPizzaService);
+  constructor (){
+    this.pizzaList = this.pizza.getAllPizza();
+  }
 
 }
