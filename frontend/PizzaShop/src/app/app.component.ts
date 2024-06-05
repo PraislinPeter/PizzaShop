@@ -17,7 +17,10 @@ export class AppComponent {
   pizzaList: Pizza []=[];
   pizza : FetchPizzaService=inject(FetchPizzaService);
   constructor (){
-    this.pizzaList = this.pizza.getAllPizza();
+    this.pizza.getAllPizza().then((pizzaList: Pizza[]) => {
+      this.pizzaList = pizzaList;
+    });
+    
   }
 
 }

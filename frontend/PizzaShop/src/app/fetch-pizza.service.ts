@@ -5,12 +5,13 @@ import { Pizza } from './pizza';
   providedIn: 'root'
 })
 export class FetchPizzaService {
-  protected pizzaList :Pizza[]=[ {id : 1, name: "name", price: 2}];
+  APIURL ='http://localhost:8000/get_pizza';
   constructor() { }
-  getAllPizza():Pizza[]{
-    return this.pizzaList;
+  async getAllPizza(): Promise <Pizza[]>{
+    const data = await fetch(this.APIURL);
+    return await data.json() ?? [];
   }
-  getPizzaById(id:number) : Pizza | undefined{
-    return this.pizzaList.find(pizza =>pizza.id===id)
-  }
+  // getPizzaById(id:number) : Pizza | undefined{
+  //   return this.pizzaList.find(pizza =>pizza.id===id)
+  // }
 }
