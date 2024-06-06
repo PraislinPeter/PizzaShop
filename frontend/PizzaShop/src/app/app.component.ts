@@ -3,8 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
 import { Pizza } from './pizza';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { FetchPizzaService } from './fetch-pizza.service';
+import { ActivatedRoute, Router,RouterModule } from '@angular/router';
+ import { CartService } from './cart.service';
 @Component({
   selector: 'app-root',
   standalone: true,

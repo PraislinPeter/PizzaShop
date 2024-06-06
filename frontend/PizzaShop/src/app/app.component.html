@@ -29,10 +29,14 @@
       </form>
       
     </div>
+    <a routerLink="/cart-page">Cart</a>
   </nav>
   <br><br>
   <div class="container" >
     <div  class="row">
+      
+
+
       <div *ngFor="let pizza of filteredPizzaList" class="col">
        <app-products [pizza]='pizza'></app-products><br>
        

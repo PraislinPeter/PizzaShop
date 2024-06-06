@@ -1,11 +1,9 @@
-import {Routes} from '@angular/router'
+import { Routes } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
-const routeConfig:Routes=[
-    {
-        path:'',
-        component: ProductsComponent,
-        title : 'Home Page'
+import { CartPageComponent } from './cart-page/cart-page.component';
 
-    }
+const routeConfig: Routes = [
+  { path: 'cart-page', component: CartPageComponent }
 ];
+
 export default routeConfig;
